@@ -1,9 +1,10 @@
+import {API_KEY} from '@env';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyCsVx8n4nnXD3goqNrFeVEyX67Ee5zaOpA',
+  apiKey: API_KEY,
   authDomain: 'finapp-d04fe.firebaseapp.com',
   projectId: 'finapp-d04fe',
   storageBucket: 'finapp-d04fe.appspot.com',
