@@ -18,6 +18,7 @@ const SignIn = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
 
   return (
     <View style={styles.Background}>
@@ -26,6 +27,17 @@ const SignIn = () => {
         behavior={Platform.OS === 'ios' ? 'padding' : ''}
         enabled>
         <Image style={styles.Logo} source={require('../../assets/Logo.png')} />
+        <View style={styles.AreaInput}>
+          <TextInput
+            value={name}
+            onChangeText={text => setName(text)}
+            style={styles.Input}
+            placeholderTextColor="rgba(255,255,255,0.2)"
+            placeholder="Name"
+            autoCorrect={false}
+            autoCapitalize="none"
+          />
+        </View>
         <View style={styles.AreaInput}>
           <TextInput
             value={email}
@@ -49,11 +61,15 @@ const SignIn = () => {
             autoCapitalize="none"
           />
         </View>
-        <TouchableOpacity style={styles.Button}>
-          <Text style={styles.ButtonText}>Acessar</Text>
+        <TouchableOpacity style={styles.Button} onPress={() => {}}>
+          <Text style={styles.ButtonText}>Criar Conta</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
-          <Text style={styles.LinkText}>Criar uma conta</Text>
+
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('SignIn');
+          }}>
+          <Text style={styles.LinkText}>Já possuo uma conta, fazer login</Text>
         </TouchableOpacity>
       </KeyboardAvoidingView>
     </View>
@@ -101,7 +117,6 @@ const styles = StyleSheet.create({
   },
   LinkText: {
     fontSize: 14,
-
     marginTop: 15,
     color: '#FFF',
   },
