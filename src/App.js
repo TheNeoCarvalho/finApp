@@ -1,27 +1,19 @@
+import 'react-native-gesture-handler';
 import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
 import firebase from './services/firebaseConnection';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import Routes from './routes';
+
+import {StatusBar} from 'react-native';
 
 const App = () => {
   return (
-    <SafeAreaView>
-      <StatusBar />
-      <ScrollView contentInsetAdjustmentBehavior="automatic">
-        <View>
-          <Text>Welcome to React Native!</Text>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <NavigationContainer>
+      <StatusBar backgroundColor="#131313" barStyle="light-content" />
+      <Routes />
+    </NavigationContainer>
   );
 };
 
