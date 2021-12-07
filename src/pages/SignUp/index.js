@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {
   Platform,
   View,
@@ -12,13 +12,19 @@ import {
 } from 'react-native';
 
 import {useNavigation} from '@react-navigation/native';
+import {AuthContext} from '../../contexts/auth';
 
 const SignIn = () => {
   const navigation = useNavigation();
+  const {signUp} = useContext(AuthContext);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
+
+  const handleSignUp = () => {
+    signUp(email, password, name);
+  };
 
   return (
     <View style={styles.Background}>
@@ -61,7 +67,7 @@ const SignIn = () => {
             autoCapitalize="none"
           />
         </View>
-        <TouchableOpacity style={styles.Button} onPress={() => {}}>
+        <TouchableOpacity style={styles.Button} onPress={handleSignUp}>
           <Text style={styles.ButtonText}>Criar Conta</Text>
         </TouchableOpacity>
 

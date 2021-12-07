@@ -1,18 +1,19 @@
 import 'react-native-gesture-handler';
 import React from 'react';
+import {StatusBar} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-import firebase from './services/firebaseConnection';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import AuthProvider from './contexts/auth';
 
 import Routes from './routes';
 
-import {StatusBar} from 'react-native';
-
 const App = () => {
+  console.disableYellowBox = true;
   return (
     <NavigationContainer>
       <StatusBar backgroundColor="#131313" barStyle="light-content" />
-      <Routes />
+      <AuthProvider>
+        <Routes />
+      </AuthProvider>
     </NavigationContainer>
   );
 };

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {
   Platform,
   View,
@@ -12,12 +12,18 @@ import {
 } from 'react-native';
 
 import {useNavigation} from '@react-navigation/native';
+import {AuthContext} from '../../contexts/auth';
 
 const SignIn = () => {
   const navigation = useNavigation();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const {signIn} = useContext(AuthContext);
+
+  const handleSignIn = () => {
+    signIn(email, password);
+  };
 
   return (
     <View style={styles.Background}>
@@ -49,7 +55,7 @@ const SignIn = () => {
             autoCapitalize="none"
           />
         </View>
-        <TouchableOpacity style={styles.Button}>
+        <TouchableOpacity style={styles.Button} onPress={handleSignIn}>
           <Text style={styles.ButtonText}>Acessar</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
@@ -86,7 +92,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   Button: {
-    backgroundColor: '#222',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#00b94a',
@@ -101,7 +106,6 @@ const styles = StyleSheet.create({
   },
   LinkText: {
     fontSize: 14,
-
     marginTop: 15,
     color: '#FFF',
   },
